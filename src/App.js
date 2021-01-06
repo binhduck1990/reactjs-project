@@ -2,18 +2,15 @@ import React from "react";
 import {
   BrowserRouter as Router,
   Switch,
-  Route,
-  Link,
-  Redirect,
-  useHistory,
-  useLocation
+  Route
 } from "react-router-dom";
 import { ProvideAuth } from "./Auth.js";
-import {Login} from './components/login'
-import {PrivateRoute} from './components/protect'
-import {DashBoard} from './components/dashboard'
+import {Login} from './pages/Login'
+import {PrivateRoute} from './pages/Protect'
+import {DashBoard} from './pages/DashBoard/Dashboard'
+import Navbar from './components/NavBar/Navbar'
 
-export default function App(props) {
+export default function App() {
   return (
     <ProvideAuth>
       <Router>
@@ -21,7 +18,8 @@ export default function App(props) {
           <Route path="/login">
             <Login/>
           </Route>
-          <PrivateRoute path="/dashboard">
+          <PrivateRoute path="/">
+              <Navbar/>
               <DashBoard />
           </PrivateRoute>
         </Switch>
